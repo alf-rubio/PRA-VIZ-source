@@ -1,0 +1,17 @@
+
+.reset {
+    text-align: center;
+    padding: 5px;
+}
+
+.boton-reset {
+    background-color: #5b93a9;
+    border: 1px white solid;
+    border-radius: 10px;
+    color: white;
+    padding: 8px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;    
+}

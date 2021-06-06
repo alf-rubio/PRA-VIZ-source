@@ -1,0 +1,24 @@
+
+.svg-grafica {
+    margin-top: 20px;
+}
+
+.grid-grafica {
+    color: rgb(116, 114, 114);
+}
+
+.eje-y {
+    color: rgb(196, 206, 255);
+    font-size:small;
+}
+
+.eje-x {
+    color: rgb(255, 231, 196);
+    font-size:small;
+}
+
+.tit-grafica {
+    text-anchor: middle;
+    font-size: medium;
+    color: green;
+}

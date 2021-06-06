@@ -1,0 +1,49 @@
+.pra {
+  background-image: url("./img/fondo-espacio-3.png");
+  background-size: cover;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.cabecera {
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  font-size:x-large;
+  padding: 10px 0px 10px 0px;
+  background: linear-gradient(to bottom, #3a58ee8f, black);
+}
+
+.satelites {
+  width: 800px;
+  border: 1px white solid;
+  border-radius: 3px;
+  margin: 20px;
+}
+
+.controles {
+  width: 400px;
+  margin: 20px;
+}
+
+.bloque1 {
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+}
+
+.bloque2 {
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+}
+
+.cuerpo {
+  width: '80%';
+  height: 500px;
+}
+
+.eje-y-paises path {
+  stroke: none;
+}

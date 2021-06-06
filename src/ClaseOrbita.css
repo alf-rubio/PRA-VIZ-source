@@ -1,0 +1,16 @@
+.clase-orbita {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tit-clase-orbita {
+    margin: 5px;
+    text-align: center;
+}
+
+.cuerpo-clase-orbita {
+    margin:auto;
+    border: 1px grey solid;
+    padding: 10px;
+}

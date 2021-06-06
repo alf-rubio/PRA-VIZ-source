@@ -1,0 +1,17 @@
+
+.reset-view {
+    text-align: center;
+    padding: 10px;
+}
+
+.boton-reset-view {
+    background-color: #a95b5b;
+    border: 1px white solid;
+    border-radius: 10px;
+    color: white;
+    padding: 8px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;    
+}
