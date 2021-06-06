@@ -7,7 +7,7 @@ Una vez descargados los módulos necesarios se puede lanzar la aplicación con:
 `npm start`
 
 ---
-El proyecto fue generado con el framework React, las instrucciones para trabajar con este tipo de proyectos es la siguiente.
+El proyecto fue generado con el framework React, las instrucciones para trabajar con este tipo de proyectos son las siguientes.
 
 ## Available Scripts
 
