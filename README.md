@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+#### Código fuente correspondiente a la práctica de la asignatura M2.859 (Visualización de datos).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Para generar el proyecto es necesario instalar los módulos con el comando:  
+`npm install`
+
+Una vez descargados los módulos necesarios se puede lanzar la aplicación con:  
+`npm start`
+
+---
+El proyecto fue generado con el framework React, las instrucciones para trabajar con este tipo de proyectos es la siguiente.
 
 ## Available Scripts
 
