@@ -1,15 +1,14 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import earthmap from "../img/earth_nasa_2012_2000x1000.jpg";
-import circle from "../img/circle.png";
+import tierra from "../img/earth_nasa_2012_2000x1000_alt.jpg";
+import plantilla from "../img/circle.png";
 import { parseTleFile, getPositionFromTle } from "./tle";
 
 let hoy = new Date();
 
 const defaultOptions = {
   backgroundColor: 0x111110,
-  defaultSatelliteColor: 0xff0000,
-  onStationClicked: null,
+  defaultSatelliteColor: 0xff0000
 };
 
 const defaultStationOptions = {
@@ -46,7 +45,7 @@ export class Sats {
     let material = new THREE.MeshPhongMaterial({
       side: THREE.DoubleSide,
       flatShading: false,
-      map: textLoader.load(earthmap, this.render),
+      map: textLoader.load(tierra, this.render),
     });
 
     const earth = new THREE.Mesh(geometry, material);
@@ -68,9 +67,7 @@ export class Sats {
 
     this.scene = new THREE.Scene();
 
-    let NEAR = 1e-6;
-    let FAR = 1e27;
-    this.camera = new THREE.PerspectiveCamera(54, width / height, NEAR, FAR);
+    this.camera = new THREE.PerspectiveCamera(54, width / height, 1e-6, 1e27);
     this.controls = new OrbitControls(this.camera, this.vista);
     this.controls.enablePan = false;
     this.controls.addEventListener("change", () => this.render());
@@ -102,7 +99,7 @@ export class Sats {
     let material = new THREE.MeshPhongMaterial({
       side: THREE.DoubleSide,
       flatShading: false,
-      map: textLoader.load(earthmap, this.render),
+      map: textLoader.load(tierra, this.render),
     });
 
     const earth = new THREE.Mesh(geometry, material);
@@ -130,7 +127,7 @@ export class Sats {
     this.render();
   };
 
-  loadLteFileStations = (url, color, dictEstaciones, stationOptions) => {
+  loadLteFileStations = (url, color, dictEstaciones, mostrarOrbita, stationOptions) => {
     const options = { ...defaultStationOptions, ...stationOptions };
 
     return fetch(url).then((res) => {
@@ -149,7 +146,7 @@ export class Sats {
 
             if (!this.material) {
               this._satelliteSprite = new THREE.TextureLoader().load(
-                circle,
+                plantilla,
                 this.render
               );
               this.material = new THREE.SpriteMaterial({
@@ -175,7 +172,11 @@ export class Sats {
             s.mesh = sat;
             this.stations.push(s);
 
-            if (s.orbitMinutes > 0) this.addOrbit(s);
+            // if (s.orbitMinutes > 0) this.addOrbit(s);
+            if (stations.length <= 100 && mostrarOrbita) {
+              this.addOrbit(s);
+            }
+            
 
             this.earth.add(sat);
           });
@@ -223,6 +224,10 @@ export class Sats {
     this.render();
   };
 
+  borraOrbitas = (estaciones) => {
+    estaciones.forEach((s) => {this.removeOrbit(s)})   
+  }
+
   removeOrbit = (station) => {
     if (!station || !station.orbit) return;
 
@@ -231,6 +236,8 @@ export class Sats {
     station.orbit = null;
     station.mesh.material = this.material;
     this.render();
+
+
   };
 
   updateSatellitePosition = (station, date) => {

@@ -1,6 +1,17 @@
-.pra {
-  background-image: url("./img/fondo-espacio-3.png");
+html { 
+  background: url("./img/fondo-espacio-3.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
+}
+
+
+
+.pra {
+  /* background-image: url("./img/fondo-espacio-3.png");
+  background-size: cover;
+  background-repeat: repeat-y; */ 
   color: white;
   font-family: 'Roboto', sans-serif;
 }
@@ -46,4 +57,10 @@
 
 .eje-y-paises path {
   stroke: none;
+}
+
+.botonera {
+
+  display: flex;
+  justify-content: center;
 }

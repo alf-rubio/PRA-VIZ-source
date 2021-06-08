@@ -4,6 +4,7 @@
 }
 
 .dato {
-    color: darkorange;
-    font-size: large;
+    color: rgb(255, 203, 121);
+    font-size:x-large;
+    font-weight:800;
 }

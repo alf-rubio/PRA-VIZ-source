@@ -9,7 +9,7 @@ class Grafica extends Component {
 
     muestraGrafica() {
 
-        let margin_gr = { 'top': 60, 'right': 50, 'bottom': 120, 'left': 50 };
+        let margin_gr = { 'top': 60, 'right': 50, 'bottom': 120, 'left': 25 };
         let width_gr = 550 - margin_gr.left - margin_gr.right;
         let height_gr = 450 - margin_gr.top - margin_gr.bottom;
 
@@ -45,10 +45,11 @@ class Grafica extends Component {
                 .range([height_gr, 0]);
 
             // eje y
+            /*
             svg.append("g")
                 .attr("class", "eje-y")
                 .call(d3.axisLeft(y_gr).tickSize(0).tickFormat(d3.format("d")));
-
+            */
 
             // eje y derecho 
             svg.append("g")

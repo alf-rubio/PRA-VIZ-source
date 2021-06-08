@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
+import "./Paises.css";
 
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
@@ -68,7 +69,7 @@ class Paises extends Component {
     datos = datos.slice().sort((a, b) => d3.ascending(a.recuento, b.recuento));
 
     if (datos.length <= 0) {
-      let svg_paises = d3.select(".paises").remove();
+      d3.select(".paises").remove();
       return;
     }
 
@@ -87,11 +88,11 @@ class Paises extends Component {
         .map((item) => {
           return { pais_operador: item.pais_operador, recuento: item.recuento };
         })
-        .filter((item, i) => i > datos.length - 11);
+        .filter((item, i) => i > datos.length - 16);
     }
 
     let margin = { top: 60, right: 60, bottom: 80, left: 120 };
-    let width = 600 - margin.left - margin.right;
+    let width = 650 - margin.left - margin.right;
     let height = 50 * data.length;
 
     let svg_paises = d3
@@ -249,7 +250,7 @@ class Paises extends Component {
     datos = datos.slice().sort((a, b) => d3.ascending(a.recuento, b.recuento));
 
     if (datos.length <= 0) {
-      let svg_paises = d3.select(".paises").remove();
+      d3.select(".paises").remove();
       return;
     }
 
@@ -268,7 +269,7 @@ class Paises extends Component {
         .map((item) => {
           return { pais_operador: item.pais_operador, recuento: item.recuento };
         })
-        .filter((item, i) => i > datos.length - 11);
+        .filter((item, i) => i > datos.length - 16);
     }
 
     let margin = { top: 80, right: 60, bottom: 80, left: 120 };

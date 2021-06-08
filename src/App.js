@@ -12,6 +12,8 @@ import ResetView from "./ResetView";
 import Reset from "./Reset";
 import Grafica from "./Grafica";
 import Paises from "./Paises";
+import MostrarOrbita from "./MostrarOrbita";
+
 
 let estaciones = [];
 let dictEstaciones = {};
@@ -36,6 +38,8 @@ class App extends Component {
       pais_operador: "todos",
       usos: "todos",
       paises_operadores: [],
+      mostrar_orbita: false,
+      mostrar_orbita_disabled : true
     };
   }
 
@@ -74,6 +78,14 @@ class App extends Component {
 
     this.actualizar();
   };
+
+  onChangeMostrarOrbita  = (b) => {
+    if (!b.target.checked) {
+      this.sats.borraOrbitas(this.state.stations);
+    }
+    this.setState({ mostrar_orbita: b.target.checked });
+    this.actualizar();
+  }
 
   onClickResetViewHandler = () => {
     this.sats.resetView();
@@ -149,20 +161,45 @@ class App extends Component {
         .loadLteFileStations(
           // active,
           cors("http://www.celestrak.com/NORAD/elements/active.txt"),
-          0xabacff,
-          dictEstaciones
+          0xffdbab,
+          dictEstaciones,
+          this.state.mostrar_orbita
         )
         .then((stations) => {
-          this.setState({
-            stations: stations,
-            paises_operadores: paises_operadores,
-          });
-          console.log(stations);
+
+          let mostrar_orbita;
+          let mostrar_orbita_disabled;
+
+          if (stations.length > 100) {
+            mostrar_orbita_disabled = true;
+            mostrar_orbita = false;
+
+            this.setState({
+              stations: stations,
+              paises_operadores: paises_operadores,
+              mostrar_orbita_disabled: mostrar_orbita_disabled,
+              mostrar_orbita: mostrar_orbita
+            });
+  
+          } else {
+            mostrar_orbita_disabled = false;
+
+            this.setState({
+              stations: stations,
+              paises_operadores: paises_operadores,
+              mostrar_orbita_disabled: mostrar_orbita_disabled
+            });
+          }
+
+          // console.log(stations);
         });
     });
   };
 
   render() {
+
+    // console.log(this.state);
+
     return (
       <div className="pra">
         <div className="cabecera">Satélites artificiales en tiempo real</div>
@@ -189,9 +226,15 @@ class App extends Component {
               paisesOperadores={this.state.paises_operadores}
               selected={this.state.pais_operador}
             />
+            <MostrarOrbita 
+              deshabilitado={this.state.mostrar_orbita_disabled} 
+              marcado={this.state.mostrar_orbita} 
+              onChange={this.onChangeMostrarOrbita}/>
             <Contador total={this.state.stations.length}/>
-            <ResetView onClick={this.onClickResetViewHandler} />
-            <Reset onClick={this.onClickResetFormulario} />
+            <div className="botonera">
+              <ResetView onClick={this.onClickResetViewHandler} />
+              <Reset onClick={this.onClickResetFormulario} />
+            </div>
           </div>
         </div>
 
